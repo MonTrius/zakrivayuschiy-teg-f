@@ -16,8 +16,6 @@
   align-items: center;
   font-family: var(--main-font);
   font-variation-settings: 'wght' var(--font-weight);
-  min-inline-size: 320px;
-  min-block-size: 100dvb;
   background-image: var(--background-gradient);
   background-size: cover;
   background-attachment: fixed;
@@ -40,7 +38,8 @@
 }
 
 .primary-size {
-  min-inline-size: clamp(23.4375rem, 16.2852rem + 30.5164vw, 43.75rem);
+  max-inline-size: clamp(23.4375rem, 16.2852rem + 30.5164vw, 43.75rem);
+  inline-size: 100%;
 }
 
 .header__title {
@@ -49,4 +48,226 @@
 
 .header__text {
   font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+}
+
+/* Основной контент с карточками */
+
+
+.content {
+  display: grid;
+  justify-items: center;
+  gap: 50px;
+}
+
+.article__card {
+  background-color: #fff;
+  border: 2px solid #000;
+}
+
+.title__card {
+  font-variation-settings: 'wght' var(--title-weight);
+  font-size: var(--font-size-s);
+  padding: 4px 10px;
+}
+
+.background__card {
+  position: relative;
+  block-size: clamp(23.1875rem, 16.0352rem + 30.5164vw, 43.5rem);
+  outline: 2px solid #000;
+}
+
+.background__card-label {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-size: var(--font-size-label);
+  font-family: var(--secondary-font);
+  text-shadow: 1px 0 #fff;
+  mix-blend-mode: hard-light;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.background__card-image {
+  inline-size: 100%;
+  block-size: 100%;
+  object-position: center 30%;
+  object-fit: cover;
+}
+
+/* Фильтры для изображений */
+
+.filter__contrast {
+  filter: contrast(50%);
+}
+
+.filter__brightness {
+  filter: brightness(80%);
+}
+
+.filter__saturate {
+  filter: saturate(150%);
+}
+
+.filter__sepia {
+  filter: sepia(90%);
+}
+
+.filter__opacity {
+  filter: opacity(60%);
+}
+
+.filter__blur {
+  filter: blur(0.3rem);
+}
+
+.filter__multiple {
+  filter: contrast(150%) sepia(70%) blur(0.1rem);
+}
+
+/* Продолжение свойств карточек */
+
+.description__card {
+  font-size: var(--font-size-s);
+}
+
+.description__card-text {
+  padding: 25px;
+}
+
+.description__card-text:last-of-type {
+  padding: 0 25px;
+}
+
+.card__button {
+  display: flex;
+  justify-content: end;
+  padding: 25px;
+}
+
+.card__icon-button {
+  background-color: transparent;
+  border: none;
+}
+
+.card__like-button {
+  max-inline-size: 130px;
+  inline-size: 100%;
+  min-block-size: 38px;
+  block-size: 100%;
+}
+
+.button__text {
+  position: relative;
+  z-index: 1;
+}
+
+.general__button {
+  background-color: #fff;
+  font-family: var(--secondary-font);
+  font-size: var(--font-size-label);
+  border: 2px solid #000;
+}
+
+.button__memory-save {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  max-inline-size: clamp(19.125rem, 18.4868rem + 2.723vw, 20.9375rem);
+  inline-size: 100%;
+  min-block-size: 55px;
+  block-size: 100%;
+}
+
+.button__memory-save-text {
+  inline-size: min-content;
+  white-space: nowrap;
+}
+
+.floppy-save {
+  max-inline-size: 21px;
+  inline-size: 100%;
+  max-block-size: 21px;
+  block-size: 100%;
+}
+
+/* Диалоговое окно */
+
+.dialog:not([open]) {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dialog {
+  max-inline-size: clamp(21.3125rem, 21.0484rem + 1.1268vw, 22.0625rem);
+  inline-size: 100%;
+  max-block-size: 191px;
+  block-size: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  border: 2px solid #000;
+}
+
+.dialog::backdrop {
+  background-color: #000;
+  opacity: 75%;
+}
+
+.dialog__content {
+  max-inline-size: clamp(16.3125rem, 15.6083rem + 3.0047vw, 18.3125rem);
+  inline-size: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  max-block-size: 63px;
+  block-size: 100%;
+}
+
+.dialog__content-text {
+  font-size: var(--font-size-label);
+  font-family: var(--secondary-font);
+  text-transform: uppercase;
+  line-height: 150%;
+}
+
+.dialog__button {
+  max-inline-size: clamp(16.3125rem, 15.6083rem + 3.0047vw, 18.3125rem);
+  inline-size: 100%;
+  max-block-size: 38px;
+  block-size: 100%;
+}
+
+.floppy-dialog {
+  max-inline-size: 39px;
+  inline-size: 100%;
+  max-block-size: 39px;
+  block-size: 100%;
+}
+
+@supports ((text-stroke: 1px #fff) or (-webkit-text-stroke: 1px #fff)) {
+  .background__card-label {
+    -webkit-text-stroke: 1px #fff;
+    text-stroke: 1px #fff;
+    text-shadow: none;
+  }
+}
+
+@media (width <= 375px) {
+  .button__memory-save {
+    flex-direction: column;
+    min-block-size: 84px;
+  }
+
+  .floppy-save {
+    max-inline-size: 28px;
+    inline-size: 100%;
+    max-block-size: 28px;
+    block-size: 100%;
+  }
 }
