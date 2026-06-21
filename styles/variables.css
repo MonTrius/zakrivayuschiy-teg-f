@@ -2,8 +2,9 @@
   /* Настройки шрифтов и их размеры */
 
   --primary-font: "Inter-Variable", sans-serif;
-  --secondary-font: "PressStart2P", monospace;
+  --secondary-font: "PressStart2P", fantasy;
   --font-weight: 410;
+  --secondary-font-weight: 400;
   --title-weight: 715;
   --main-font-size: 18px;
   --font-size-s: 14px;

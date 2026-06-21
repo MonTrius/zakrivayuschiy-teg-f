@@ -17,7 +17,7 @@
   flex-direction: column;
   justify-content: center;
   gap: 20px;
-  margin-bottom: 100px;
+  margin-bottom: 93.3px;
   border: var(--border-card);
   padding: clamp(7.6063rem, 7.4302rem + 0.7512vw, 8.1063rem) 0;
   color: var(--primary-color);
@@ -38,6 +38,7 @@
 
 .header__text {
   font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  font-weight: var(--secondary-font-weight);
 }
 
 /* Основной контент с карточками */
@@ -56,12 +57,12 @@
 .title__card {
   padding: 4px 10px;
   font-size: var(--main-font-size);
+  border-bottom: var(--border-card);
   font-variation-settings: "wght" var(--title-weight);
 }
 
 .background__card {
   position: relative;
-  outline: var(--border-card);
   block-size: clamp(23.1875rem, 16.0352rem + 30.5164vw, 43.5rem);
 }
 
@@ -117,10 +118,12 @@
 /* Продолжение свойств карточек */
 
 .description__card {
+  border-top: var(--border-card);
   font-size: var(--main-font-size);
 }
 
 .description__card-text {
+  line-height: 118%;
   padding: 25px;
 }
 
@@ -227,22 +230,16 @@
   mix-blend-mode: difference;
 }
 
-.dialog:not([open]) {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.dialog {
+.dialog[open] {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 30px;
+  padding: 28px;
   border: var(--border-card);
   max-inline-size: clamp(21.3125rem, 21.0484rem + 1.1268vw, 22.0625rem);
   inline-size: 100%;
-  max-block-size: 191px;
-  block-size: 100%;
 }
 
 .dialog::backdrop {
@@ -255,11 +252,9 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 20px;
   max-inline-size: clamp(16.3125rem, 15.6083rem + 3.0047vw, 18.3125rem);
   inline-size: 100%;
-  max-block-size: 63px;
-  block-size: 100%;
 }
 
 .dialog__content-text {
@@ -270,9 +265,9 @@
 }
 
 .dialog__button {
-  max-inline-size: clamp(16.3125rem, 15.6083rem + 3.0047vw, 18.3125rem);
+  min-inline-size: clamp(16.3125rem, 15.6083rem + 3.0047vw, 18.3125rem);
   inline-size: 100%;
-  max-block-size: 38px;
+  min-block-size: 38px;
   block-size: 100%;
 }
 
@@ -302,6 +297,14 @@
 }
 
 @media (width <= 375px) {
+  .header {
+    margin-bottom: 98px;
+  }
+
+  .description__card-text {
+    line-height: 1.173;
+  }
+
   .button__memory-save {
     flex-direction: column;
     min-block-size: 84px;
