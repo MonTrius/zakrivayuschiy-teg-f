@@ -1,13 +1,25 @@
-/* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
-
 :root {
-  --main-font: 'Inter-Variable', sans-serif;
+  /* Настройки шрифтов и их размеры */
+
+  --primary-font: "Inter-Variable", sans-serif;
+  --secondary-font: "PressStart2P-Regular", monospace;
   --font-weight: 410;
   --title-weight: 715;
-  --font-size-s: 18px;
-  --font-size-label: 14px;
-  --secondary-font: 'PressStart2P-Regular', monospace; 
-  --background-gradient: repeating-linear-gradient(to right, #d3d3d3 0 2px, transparent 2px 4px),
-  repeating-linear-gradient(to bottom, #d3d3d3 0 2px, transparent 2px 4px),
-  repeating-linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a);
+  --main-font-size: 18px;
+  --font-size-s: 14px;
+
+  /* Основные цвета */
+
+  --primary-color: #000;
+  --bg-color: #fff;
+  --border-card: 2px solid #000;
+  --transparent-color: transparent;
+  --background-gradient:
+    repeating-linear-gradient(to right, #d3d3d3 0 2px, transparent 2px 4px),
+    repeating-linear-gradient(to bottom, #d3d3d3 0 2px, transparent 2px 4px),
+    repeating-linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a);
+
+  /* Переменные для иконки сердца */
+  --icon-contour: #000;
+  --sparks-color: #ff0000;
 }

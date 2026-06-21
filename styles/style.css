@@ -1,40 +1,30 @@
-/* Здесь вы напишете основную часть стилей страницы.
-
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
-*/
+/* Шапка и основа */
 
 .page {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: var(--main-font);
-  font-variation-settings: 'wght' var(--font-weight);
+  margin: 100px 0;
+  font-family: var(--primary-font);
   background-image: var(--background-gradient);
   background-size: cover;
   background-attachment: fixed;
-  padding: 100px 0;
+  font-variation-settings: "wght" var(--font-weight);
 }
 
 .header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: center;
   gap: 20px;
-  background-color: #fff;
-  color: #000;
-  border: 2px solid #000;
-  font-family: var(--secondary-font);
-  text-transform: uppercase;
-  padding: clamp(7.6063rem, 7.4302rem + 0.7512vw, 8.1063rem) 0;
   margin-bottom: 100px;
+  border: var(--border-card);
+  padding: clamp(7.6063rem, 7.4302rem + 0.7512vw, 8.1063rem) 0;
+  color: var(--primary-color);
+  font-family: var(--secondary-font);
+  text-align: center;
+  text-transform: uppercase;
+  background-color: var(--bg-color);
 }
 
 .primary-size {
@@ -52,7 +42,6 @@
 
 /* Основной контент с карточками */
 
-
 .content {
   display: grid;
   justify-items: center;
@@ -60,39 +49,39 @@
 }
 
 .article__card {
-  background-color: #fff;
-  border: 2px solid #000;
+  border: var(--border-card);
+  background-color: var(--bg-color);
 }
 
 .title__card {
-  font-variation-settings: 'wght' var(--title-weight);
-  font-size: var(--font-size-s);
   padding: 4px 10px;
+  font-size: var(--main-font-size);
+  font-variation-settings: "wght" var(--title-weight);
 }
 
 .background__card {
   position: relative;
+  outline: var(--border-card);
   block-size: clamp(23.1875rem, 16.0352rem + 30.5164vw, 43.5rem);
-  outline: 2px solid #000;
 }
 
 .background__card-label {
   position: absolute;
   top: 25px;
   right: 25px;
-  font-size: var(--font-size-label);
-  font-family: var(--secondary-font);
-  text-shadow: 1px 0 #fff;
-  mix-blend-mode: hard-light;
-  opacity: 0.5;
   z-index: 1;
+  opacity: 0.5;
+  font-family: var(--secondary-font);
+  font-size: var(--font-size-s);
+  text-shadow: 1px 0 var(--bg-color);
+  mix-blend-mode: hard-light;
 }
 
 .background__card-image {
+  object-fit: cover;
+  object-position: center 30%;
   inline-size: 100%;
   block-size: 100%;
-  object-position: center 30%;
-  object-fit: cover;
 }
 
 /* Фильтры для изображений */
@@ -128,7 +117,7 @@
 /* Продолжение свойств карточек */
 
 .description__card {
-  font-size: var(--font-size-s);
+  font-size: var(--main-font-size);
 }
 
 .description__card-text {
@@ -142,12 +131,19 @@
 .card__button {
   display: flex;
   justify-content: end;
+  gap: 5px;
   padding: 25px;
 }
 
 .card__icon-button {
-  background-color: transparent;
-  border: none;
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--transparent-color);
+  padding: 0;
+  background-color: var(--transparent-color);
+  transition: border-color 0.3s ease;
+  cursor: pointer;
+  block-size: 38px;
 }
 
 .card__like-button {
@@ -159,15 +155,50 @@
 
 .button__text {
   position: relative;
-  z-index: 1;
+  color: var(--bg-color);
+  mix-blend-mode: difference;
 }
 
 .general__button {
-  background-color: #fff;
+  position: relative;
+  border: var(--border-card);
   font-family: var(--secondary-font);
-  font-size: var(--font-size-label);
-  border: 2px solid #000;
+  font-size: var(--font-size-s);
+  background-color: var(--bg-color);
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
 }
+
+/* Состояния кнопок */
+
+.general__button:focus {
+  box-shadow: 2px 2px 0 0 var(--primary-color);
+  outline: none;
+}
+
+.general__button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--primary-color);
+  transition: scale 0.5s ease-in-out;
+  transform-origin: left;
+  scale: 0 1;
+}
+
+.general__button:hover::before {
+  scale: 1;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  border-color: var(--primary-color);
+}
+
+/* Диалоговое окно */
 
 .button__memory-save {
   display: flex;
@@ -181,18 +212,20 @@
 }
 
 .button__memory-save-text {
+  color: var(--bg-color);
   inline-size: min-content;
   white-space: nowrap;
+  mix-blend-mode: difference;
 }
 
 .floppy-save {
+  fill: var(--bg-color);
   max-inline-size: 21px;
   inline-size: 100%;
   max-block-size: 21px;
   block-size: 100%;
+  mix-blend-mode: difference;
 }
-
-/* Диалоговое окно */
 
 .dialog:not([open]) {
   opacity: 0;
@@ -200,40 +233,40 @@
 }
 
 .dialog {
-  max-inline-size: clamp(21.3125rem, 21.0484rem + 1.1268vw, 22.0625rem);
-  inline-size: 100%;
-  max-block-size: 191px;
-  block-size: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 30px;
-  border: 2px solid #000;
+  border: var(--border-card);
+  max-inline-size: clamp(21.3125rem, 21.0484rem + 1.1268vw, 22.0625rem);
+  inline-size: 100%;
+  max-block-size: 191px;
+  block-size: 100%;
 }
 
 .dialog::backdrop {
-  background-color: #000;
   opacity: 75%;
+  background-color: var(--primary-color);
 }
 
 .dialog__content {
-  max-inline-size: clamp(16.3125rem, 15.6083rem + 3.0047vw, 18.3125rem);
-  inline-size: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 12px;
+  max-inline-size: clamp(16.3125rem, 15.6083rem + 3.0047vw, 18.3125rem);
+  inline-size: 100%;
   max-block-size: 63px;
   block-size: 100%;
 }
 
 .dialog__content-text {
-  font-size: var(--font-size-label);
   font-family: var(--secondary-font);
-  text-transform: uppercase;
+  font-size: var(--font-size-s);
   line-height: 150%;
+  text-transform: uppercase;
 }
 
 .dialog__button {
@@ -243,18 +276,28 @@
   block-size: 100%;
 }
 
+.dialog__button-text {
+  color: var(--bg-color);
+  mix-blend-mode: difference;
+}
+
 .floppy-dialog {
+  fill: var(--bg-color);
   max-inline-size: 39px;
   inline-size: 100%;
   max-block-size: 39px;
   block-size: 100%;
+  mix-blend-mode: difference;
 }
 
-@supports ((text-stroke: 1px #fff) or (-webkit-text-stroke: 1px #fff)) {
+@supports (
+  (text-stroke: 1px var(--bg-color)) or
+    (-webkit-text-stroke: 1px var(--bg-color))
+) {
   .background__card-label {
-    -webkit-text-stroke: 1px #fff;
-    text-stroke: 1px #fff;
     text-shadow: none;
+    -webkit-text-stroke: 1px var(--bg-color);
+    text-stroke: 1px var(--bg-color);
   }
 }
 
